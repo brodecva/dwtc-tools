@@ -15,7 +15,11 @@ public class Dataset implements Serializable {
 	protected transient static final Gson gson = new Gson();
 	protected transient static final Charset utf8 = Charsets.UTF_8;
 
-	/* the actual relation extracted, always column oriented */
+	public TableOrientation tableOrientation = null; // table orientation
+	
+	/* the actual relation extracted,
+	 * orientated according to the ableOrientation field
+	 */
 	public String[][] relation = null;
 	public String pageTitle = ""; // the <title> tag of the original page
 	public String title = ""; // content of a <caption> tag of the table, if it
@@ -61,6 +65,14 @@ public class Dataset implements Serializable {
 		return attrs;
 	}
 
+	public TableOrientation getTableOrientation() {
+		return tableOrientation;
+	}
+	
+	public void setTableOrientation(TableOrientation tableOrientation) {
+		this.tableOrientation = tableOrientation;
+	}
+	
 	public String[][] getRelation() {
 		return relation;
 	}
